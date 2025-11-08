@@ -70,19 +70,38 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const perfumesPerPage = 12;
+
+  // Debouncing para el buscador
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSearchQuery(searchTerm);
+      setCurrentPage(1); // Reset a página 1 cuando busca
+    }, 500); // 500ms delay
+
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
 
   useEffect(() => {
     loadPerfumes();
-  }, [currentPage]);
+  }, [currentPage, searchQuery]);
 
   const loadPerfumes = async () => {
     try {
       setLoading(true);
-      const response = await perfumesApi.getAll({ 
+      const params = { 
         page: currentPage, 
         limit: perfumesPerPage 
-      });
+      };
+      
+      // Agregar búsqueda si existe
+      if (searchQuery.trim()) {
+        params.search = searchQuery.trim();
+      }
+      
+      const response = await perfumesApi.getAll(params);
       
       // Transformar datos de la API al formato esperado
       const perfumesData = response.data.perfumes.map(perfume => ({
@@ -100,6 +119,16 @@ function Home() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const clearSearch = () => {
+    setSearchTerm('');
+    setSearchQuery('');
+    setCurrentPage(1);
   };
 
   const scrollToPerfumes = () => {
@@ -160,11 +189,52 @@ function Home() {
       </section>
 
       <section id="perfumes" className="perfumes-section">
-        <h2>Todos los Perfumes</h2>
+        <div className="perfumes-header">
+          <h2>Todos los Perfumes</h2>
+          
+          {/* Buscador */}
+          <div className="search-box">
+            <input
+              type="text"
+              placeholder="Buscar perfumes..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+              className="search-input"
+            />
+            {searchTerm && (
+              <button 
+                onClick={clearSearch} 
+                className="clear-search"
+                title="Limpiar búsqueda"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+        </div>
+
         {loading ? (
-          <p>Cargando perfumes...</p>
+          <p className="loading-message">Cargando perfumes...</p>
+        ) : perfumes.length === 0 ? (
+          <div className="no-results">
+            <p>No se encontraron perfumes{searchQuery && ` para "${searchQuery}"`}</p>
+            {searchQuery && (
+              <button onClick={clearSearch} className="btn-secondary">
+                Ver todos los perfumes
+              </button>
+            )}
+          </div>
         ) : (
           <>
+            {searchQuery && (
+              <p className="search-results-info">
+                Mostrando resultados para: <strong>"{searchQuery}"</strong>
+                <button onClick={clearSearch} className="btn-link">
+                  Ver todos
+                </button>
+              </p>
+            )}
+
             <div className="perfumes-grid">
               {perfumes.map((perfume) => (
                 <PerfumeCard 
@@ -175,16 +245,37 @@ function Home() {
               ))}
             </div>
 
+            {/* Paginación mejorada */}
             {totalPages > 1 && (
               <div className="pagination">
-                {currentPage > 1 && (
-                  <button onClick={() => {
-                    setCurrentPage(currentPage - 1);
-                    scrollToPerfumes();
-                  }}>
-                    ←
+                {/* Primera página */}
+                {currentPage > 2 && (
+                  <button 
+                    onClick={() => {
+                      setCurrentPage(1);
+                      scrollToPerfumes();
+                    }}
+                    title="Primera página"
+                    className="pagination-edge"
+                  >
+                    «
                   </button>
                 )}
+
+                {/* Anterior */}
+                {currentPage > 1 && (
+                  <button 
+                    onClick={() => {
+                      setCurrentPage(currentPage - 1);
+                      scrollToPerfumes();
+                    }}
+                    title="Página anterior"
+                  >
+                    ‹
+                  </button>
+                )}
+
+                {/* Números de página */}
                 {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
                   let pageNum;
                   if (totalPages <= 5) {
@@ -209,12 +300,31 @@ function Home() {
                     </button>
                   );
                 })}
+
+                {/* Siguiente */}
                 {currentPage < totalPages && (
-                  <button onClick={() => {
-                    setCurrentPage(currentPage + 1);
-                    scrollToPerfumes();
-                  }}>
-                    →
+                  <button 
+                    onClick={() => {
+                      setCurrentPage(currentPage + 1);
+                      scrollToPerfumes();
+                    }}
+                    title="Página siguiente"
+                  >
+                    ›
+                  </button>
+                )}
+
+                {/* Última página */}
+                {currentPage < totalPages - 1 && (
+                  <button 
+                    onClick={() => {
+                      setCurrentPage(totalPages);
+                      scrollToPerfumes();
+                    }}
+                    title="Última página"
+                    className="pagination-edge"
+                  >
+                    »
                   </button>
                 )}
               </div>

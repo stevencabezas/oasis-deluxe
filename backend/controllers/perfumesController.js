@@ -36,24 +36,37 @@ export const getAllPerfumes = async (req, res) => {
       if (maxPrice) where.precio[Op.lte] = parseFloat(maxPrice);
     }
     
+    // Búsqueda en nombre de perfume y marca
+    let includeSearch = [{
+      model: Brand,
+      as: 'marca',
+      attributes: ['id', 'nombre', 'brandId', 'slug']
+    }];
+    
     if (search) {
-      where.nombre = {
-        [Op.iLike]: `%${search}%`
-      };
+      where[Op.or] = [
+        {
+          nombre: {
+            [Op.iLike]: `%${search}%`
+          }
+        },
+        {
+          '$marca.nombre$': {
+            [Op.iLike]: `%${search}%`
+          }
+        }
+      ];
     }
     
     const offset = (Number(page) - 1) * Number(limit);
     
     const { count, rows: perfumes } = await Perfume.findAndCountAll({
       where,
-      include: [{
-        model: Brand,
-        as: 'marca',
-        attributes: ['id', 'nombre', 'brandId', 'slug']
-      }],
+      include: includeSearch,
       order: [['nombre', 'ASC']],
       limit: Number(limit),
-      offset: offset
+      offset: offset,
+      distinct: true // Para contar correctamente con JOINs
     });
     
     const pages = Math.ceil(count / Number(limit));

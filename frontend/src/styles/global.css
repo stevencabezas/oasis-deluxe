@@ -898,26 +898,173 @@ body {
     transition: transform 0.3s ease;
 }
 
-.pagination {
-  margin-top: 20px;
+/* ===== Header de Perfumes con Buscador ===== */
+.perfumes-header {
   display: flex;
-  justify-content: center;
-  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
-.pagination button {
-  padding: 8px 14px;
+.perfumes-header h2 {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* ===== Buscador ===== */
+.search-box {
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+  min-width: 250px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #f39c12;
+  box-shadow: 0 0 5px rgba(243, 156, 18, 0.3);
+}
+
+.clear-search {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #e74c3c;
+  color: white;
   border: none;
-  background: #232323;
-  color: #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.clear-search:hover {
+  background: #c0392b;
+}
+
+/* ===== Mensajes de búsqueda ===== */
+.search-results-info {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 5px;
+  color: #555;
+}
+
+.search-results-info strong {
+  color: #f39c12;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #f39c12;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.btn-link:hover {
+  color: #d68910;
+}
+
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.no-results p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.btn-secondary {
+  padding: 10px 20px;
+  background: #f39c12;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #d68910;
+}
+
+.loading-message {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #666;
+}
+
+/* ===== Paginación Mejorada ===== */
+.pagination {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+
+.pagination button {
+  padding: 10px 16px;
+  border: 2px solid #232323;
+  background: #fff;
+  color: #232323;
   cursor: pointer;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 45px;
+}
+
+.pagination button:hover {
+  background: #232323;
+  color: #fff;
+  transform: translateY(-2px);
 }
 
 .pagination button.active {
   background: #f39c12;
+  border-color: #f39c12;
+  color: #fff;
+  cursor: default;
+  transform: none;
+}
+
+.pagination button.pagination-edge {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 @media (max-width: 768px) {
@@ -970,9 +1117,49 @@ body {
         height: auto;
     }
 
+  /* Paginación móvil */
   .pagination button {
-    padding: 6px 10px;
-    font-size: 13px;
+    padding: 8px 12px;
+    font-size: 14px;
+    min-width: 40px;
+  }
+
+  .pagination button.pagination-edge {
+    font-size: 16px;
+  }
+
+  /* Buscador móvil */
+  .perfumes-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .perfumes-header h2 {
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .search-box {
+    max-width: 100%;
+  }
+
+  .search-input {
+    font-size: 16px; /* Evita zoom en iOS */
+    padding: 12px 40px 12px 15px;
+  }
+
+  .no-results {
+    padding: 40px 20px;
+  }
+
+  .no-results p {
+    font-size: 16px;
+  }
+
+  .search-results-info {
+    font-size: 14px;
+    padding: 8px;
   }
 }
 
