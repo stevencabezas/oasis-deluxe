@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Perfumería Oasis Deluxe</title>
+
+    <meta name="description"
+        content="Perfumería Oasis Deluxe: Encuentra perfumes originales, nuevos y sellados. Compra en línea y recibe en todo Costa Rica.">
+    <meta name="keywords"
+        content="perfumería, perfumes, perfumes originales, fragancias, perfumes Costa Rica, afnan, armaf, attar collection, oasis deluxe">
+    <meta name="author" content="Perfumería Oasis Deluxe">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Perfumería Oasis Deluxe">
+    <meta property="og:description"
+        content="Explora nuestra exclusiva selección de fragancias de diseñador y nicho, cuidadosamente elegidas por su elegancia y carácter.">
+    <meta property="og:image" content="https://www.perfumeriaoasisdeluxe.com/img/logooasis.jpg">
+    <meta property="og:url" content="https://www.perfumeriaoasisdeluxe.com">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://www.perfumeriaoasisdeluxe.com/img/logooasis.png" type="image/png">
+    <link rel="manifest" href="manifest.json">
+
+    <script src="script.js" type="module"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="./index.html">Perfumería Oasis Deluxe</a>
+            </div>
+            <ul class="menu">
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./decants.html">Decants</a></li>
+                <li><a href="./perfumes-marcas.html">Marcas</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </nav>
+    </header>
+
+    <section class="main-section">
+
+        <!-- ===== Carrusel Destacados ===== -->
+        <section id="destacados-desktop" class="carousel d-none" aria-label="Carrusel de destacados">
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <!-- Slide 1 -->
+                    <figure class="carousel-slide ">
+                        <img src="img/lattafa/hombre/1.jpg" alt="Fragancias nicho con acordes orientales y vainilla"
+                            loading="eager" fetchpriority="high" />
+                        <figcaption class="carousel-caption">
+                            <h3>Fragancias Árabes</h3>
+                            <p>Selección exclusiva para quienes buscan algo único.</p>
+                            <a href="#marcas" class="carousel-cta">Ver perfumes</a>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Slide 2 -->
+                    <figure class="carousel-slide">
+                        <img src="img/lattafa/hombre/6.jpg" alt="Decants para probar antes de comprar" loading="lazy" />
+                        <figcaption class="carousel-caption">
+                            <h3>Decants</h3>
+                            <p>Prueba el aroma perfecto sin compromiso.</p>
+                            <a href="./decants.html" class="carousel-cta">Ver decants</a>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Slide 3 -->
+                    <figure class="carousel-slide">
+                        <img src="img/carolinaherrera/mujer/6.jpg" alt="Clásicos de diseñador para toda ocasión"
+                            loading="lazy" />
+                        <figcaption class="carousel-caption">
+                            <h3>Diseñador</h3>
+                            <p>Clásicos que nunca pasan de moda.</p>
+                            <a href="#marcas-diseno" class="carousel-cta">Ver marcas</a>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="carousel-slide ">
+                        <img src="img/marly/hombre/1.jpg" alt="Fragancias nicho con acordes orientales y vainilla"
+                            loading="eager" fetchpriority="high" />
+                        <figcaption class="carousel-caption">
+                            <h3>Fragancias Nicho</h3>
+                            <p>Selección exclusiva para quienes buscan algo único.</p>
+                            <a href="#marcas-nichos" class="carousel-cta">Ver nichos</a>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="carousel-slide">
+                        <img src="img/dior/mujer/1.jpg" alt="Clásicos de diseñador para toda ocasión" loading="lazy" />
+                        <figcaption class="carousel-caption">
+                            <h3>Diseñador</h3>
+                            <p>Clásicos que nunca pasan de moda.</p>
+                            <a href="#marcas-diseno" class="carousel-cta">Ver marcas</a>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="carousel-slide ">
+                        <img src="img/marly/hombre/2.jpg" alt="Fragancias nicho con acordes orientales y vainilla"
+                            loading="eager" fetchpriority="high" />
+                        <figcaption class="carousel-caption">
+                            <h3>Fragancias Nicho</h3>
+                            <p>Selección exclusiva para quienes buscan algo único.</p>
+                            <a href="#marcas-nichos" class="carousel-cta">Ver nichos</a>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Slide 5 -->
+                    <figure class="carousel-slide">
+                        <img src="img/jeanpaulgaultier/hombre/1.jpg" alt="Clásicos de diseñador para toda ocasión"
+                            loading="lazy" />
+                        <figcaption class="carousel-caption">
+                            <h3>Diseñador</h3>
+                            <p>Clásicos que nunca pasan de moda.</p>
+                            <a href="#marcas-diseno" class="carousel-cta">Ver marcas</a>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <!-- Controles -->
+            <button class="carousel-btn prev" aria-label="Anterior" type="button">‹</button>
+            <button class="carousel-btn next" aria-label="Siguiente" type="button">›</button>
+
+            <!-- Indicadores -->
+            <ul class="carousel-dots" role="tablist" aria-label="Seleccionar diapositiva"></ul>
+        </section>
+        <!-- ===== Fin Carrusel ===== -->
+        <div>
+            <div class="banner-item-wrapper banner-item-large-img banner-item-border show-item" data-animate="effect_1">
+                <div class="banner-item">
+                    <div class="content-box content-box-absolute content-box-center text-center">
+                        <h3 class="banner-heading">
+                            ¿Y si tu aroma ideal está aquí?
+                        </h3>
+                        <span class="banner-description">
+                            Oasis de Luxe: perfumes originales, nuevos y sellados.<br>
+                            Explora nuestra exclusiva selección de fragancias de diseñador y nicho, cuidadosamente
+                            elegidas por su elegancia y carácter.<br>
+                            Además, disfruta de nuestros sofisticados decants, perfectos para probar y descubrir tu
+                            aroma ideal sin compromiso.<br>
+                            ✨ Haz tu pedido hoy y lleva el lujo contigo a donde vayas.
+                        </span>
+                        <a href="#marcas" class="banner-button animated-banner-button">
+                            <span>Descubre</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===== Carrusel Destacados ===== -->
+    <section id="destacados" class="carousel d-none-desk" aria-label="Carrusel de destacados">
+        <div class="carousel-viewport">
+            <div class="carousel-track">
+                <!-- Slide 1 -->
+                <figure class="carousel-slide ">
+                    <img src="img/lattafa/hombre/1.jpg" alt="Fragancias nicho con acordes orientales y vainilla"
+                        loading="eager" fetchpriority="high" />
+                    <figcaption class="carousel-caption">
+                        <h3>Fragancias Árabes</h3>
+                        <p>Selección exclusiva para quienes buscan algo único.</p>
+                        <a href="#marcas" class="carousel-cta">Ver perfumes</a>
+                    </figcaption>
+                </figure>
+
+                <!-- Slide 2 -->
+                <figure class="carousel-slide">
+                    <img src="img/lattafa/hombre/6.jpg" alt="Decants para probar antes de comprar" loading="lazy" />
+                    <figcaption class="carousel-caption">
+                        <h3>Decants</h3>
+                        <p>Prueba el aroma perfecto sin compromiso.</p>
+                        <a href="./decants.html" class="carousel-cta">Ver decants</a>
+                    </figcaption>
+                </figure>
+
+                <!-- Slide 3 -->
+                <figure class="carousel-slide">
+                    <img src="img/carolinaherrera/mujer/6.jpg" alt="Clásicos de diseñador para toda ocasión"
+                        loading="lazy" />
+                    <figcaption class="carousel-caption">
+                        <h3>Diseñador</h3>
+                        <p>Clásicos que nunca pasan de moda.</p>
+                        <a href="#marcas-diseno" class="carousel-cta">Ver marcas</a>
+                    </figcaption>
+                </figure>
+
+                <figure class="carousel-slide ">
+                    <img src="img/marly/hombre/1.jpg" alt="Fragancias nicho con acordes orientales y vainilla"
+                        loading="eager" fetchpriority="high" />
+                    <figcaption class="carousel-caption">
+                        <h3>Fragancias Nicho</h3>
+                        <p>Selección exclusiva para quienes buscan algo único.</p>
+                        <a href="#marcas-nichos" class="carousel-cta">Ver nichos</a>
+                    </figcaption>
+                </figure>
+
+                <figure class="carousel-slide">
+                    <img src="img/dior/mujer/1.jpg" alt="Clásicos de diseñador para toda ocasión" loading="lazy" />
+                    <figcaption class="carousel-caption">
+                        <h3>Diseñador</h3>
+                        <p>Clásicos que nunca pasan de moda.</p>
+                        <a href="#marcas-diseno" class="carousel-cta">Ver marcas</a>
+                    </figcaption>
+                </figure>
+
+                <figure class="carousel-slide ">
+                    <img src="img/marly/hombre/2.jpg" alt="Fragancias nicho con acordes orientales y vainilla"
+                        loading="eager" fetchpriority="high" />
+                    <figcaption class="carousel-caption">
+                        <h3>Fragancias Nicho</h3>
+                        <p>Selección exclusiva para quienes buscan algo único.</p>
+                        <a href="#marcas-nichos" class="carousel-cta">Ver nichos</a>
+                    </figcaption>
+                </figure>
+
+                <!-- Slide 5 -->
+                <figure class="carousel-slide">
+                    <img src="img/jeanpaulgaultier/hombre/1.jpg" alt="Clásicos de diseñador para toda ocasión"
+                        loading="lazy" />
+                    <figcaption class="carousel-caption">
+                        <h3>Diseñador</h3>
+                        <p>Clásicos que nunca pasan de moda.</p>
+                        <a href="#marcas-diseno" class="carousel-cta">Ver marcas</a>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <!-- Controles -->
+        <button class="carousel-btn prev" aria-label="Anterior" type="button">‹</button>
+        <button class="carousel-btn next" aria-label="Siguiente" type="button">›</button>
+
+        <!-- Indicadores -->
+        <ul class="carousel-dots" role="tablist" aria-label="Seleccionar diapositiva"></ul>
+    </section>
+    <!-- ===== Fin Carrusel ===== -->
+
+    <section id="marcas" class="marcas">
+        <h2>Nuestras Marcas Árabes</h2>
+        <div class="marcas-grid">
+            <div class="marca" data-id="afnan">
+                <img src="./img/LOGO_AFNAN.png" alt="Afnan">
+                <p>Afnan</p>
+            </div>
+            <div class="marca" data-id="alharamain">
+                <img src="./img/Al Haramain.png" alt="Al Haramain Perfumes">
+                <p>Al Haramain</p>
+            </div>
+            <div class="marca" data-id="armaf">
+                <img src="./img/Armaf2.png" alt="Armaf">
+                <p>Armaf</p>
+            </div>
+            <div class="marca">
+                <img src="./img/altar.png" alt="Attar Collection">
+                <p>Attar Collection</p>
+            </div>
+            <div class="marca" data-id="bharara">
+                <img src="./img/bhahara.jpg" alt="Bharara">
+                <p>Bharara</p>
+            </div>
+            <div class="marca" data-id="dumont">
+                <img src="./img/dunont.jpg" alt="Dumont">
+                <p>Dumont</p>
+            </div>
+            <div class="marca">
+                <img src="./img/s-l1200.jpg" alt="Emper">
+                <p>Emper</p>
+            </div>
+            <div class="marca" data-id="frenchavenue">
+                <img src="./img/french.png" alt="French Avenue">
+                <p>French Avenue</p>
+            </div>
+            <div class="marca" data-id="jomilano">
+                <img src="./img/Jo Milano1.jpg" alt="Jo Milano">
+                <p>Jo Milano</p>
+            </div>
+            <div class="marca" data-id="lattafa">
+                <img src="./img/Lattafa.png" alt="Lattafa Perfumes">
+                <p>Lattafa</p>
+            </div>
+            <div class="marca" data-id="maisonalhambra">
+                <img src="./img/maison.jpg" alt="Maison Alhambra">
+                <p>Maison Alhambra</p>
+            </div>
+            <div class="marca" data-id="orientica">
+                <img src="./img/Orientica.jpg" alt="Orientica">
+                <p>Orientica</p>
+            </div>
+            <div class="marca" data-id="rasasi">
+                <img src="./img/Rasasi1.jpg" alt="Rasasi">
+                <p>Rasasi</p>
+            </div>
+            <div class="marca" data-id="rave">
+                <img src="./img/RAVE.jpg" alt="RAVE">
+                <p>RAVE</p>
+            </div>
+        </div>
+    </section>
+    <section id="marcas-diseno" class="marcas designer">
+        <h2>Marcas Diseñador</h2>
+        <div class="marcas-grid">
+            <div class="marca" data-id="antoniobanderas">
+                <img src="./img/Antonio Banderas.png" alt="Antonio Banderas">
+                <p>Antonio Banderas</p>
+            </div>
+            <div class="marca" data-id="ariana">
+                <img src="./img/ariana.png" alt="Ariana Grande">
+                <p>Ariana Grande</p>
+            </div>
+            <div class="marca" data-id="azzaro">
+                <img src="./img/Azzaro.jpg" alt="Azzaro">
+                <p>Azzaro</p>
+            </div>
+            <div class="marca" data-id="burberry">
+                <img src="./img/Burberry.jpg" alt="Burberry">
+                <p>Burberry</p>
+            </div>
+            <div class="marca" data-id="bvlgari">
+                <img src="./img/Bvlgari.png" alt="Bvlgari">
+                <p>Bvlgari</p>
+            </div>
+            <div class="marca" data-id="carolinaherrera">
+                <img src="./img/Carolina Herrera.jpg" alt="Carolina Herrera">
+                <p>Carolina Herrera</p>
+            </div>
+            <div class="marca" data-id="chanel">
+                <img src="./img/Chanel.png" alt="Chanel">
+                <p>Chanel</p>
+            </div>
+            <div class="marca" data-id="clinique">
+                <img src="./img/Clinique-Emblem.png" alt="Clinique">
+                <p>Clinique</p>
+            </div>
+            <div class="marca">
+                <img src="./img/Davidoff.jpg" alt="Davidoff">
+                <p>Davidoff</p>
+            </div>
+            <div class="marca" data-id="dior">
+                <img src="./img/Dior.jpg" alt="Dior">
+                <p>Dior</p>
+            </div>
+            <div class="marca" data-id="dolcegabbana">
+                <img src="./img/Dolce&Gabbana.jpg" alt="Dolce&Gabbana">
+                <p>Dolce&Gabbana</p>
+            </div>
+            <div class="marca" data-id="giorgioarmani">
+                <img src="./img/Giorgio Armani.png" alt="Giorgio Armani">
+                <p>Giorgio Armani</p>
+            </div>
+            <div class="marca" data-id="givenchy">
+                <img src="./img/Givenchy.png" alt="Givenchy">
+                <p>Givenchy</p>
+            </div>
+            <div class="marca" data-id="guerlain">
+                <img src="./img/Guerlain.png" alt="Guerlain">
+                <p>Guerlain</p>
+            </div>
+            <div class="marca" data-id="hallowen">
+                <img src="./img/Halloween.png" alt="Halloween">
+                <p>Halloween</p>
+            </div>
+            <div class="marca" data-id="hermes">
+                <img src="./img/Hermès.png" alt="Hermès">
+                <p>Hermès</p>
+            </div>
+            <div class="marca" data-id="hugoboss">
+                <img src="./img/Hugo Boss.png" alt="Hugo Boss">
+                <p>Hugo Boss</p>
+            </div>
+            <div class="marca" data-id="isseymiyake">
+                <img src="./img/Issey Miyake.png" alt="Issey Miyake">
+                <p>Issey Miyake</p>
+            </div>
+            <div class="marca" data-id="jeanpaulgaultier">
+                <img src="./img/Jean Paul Gaultier.png" alt="Jean Paul Gaultier">
+                <p>Jean Paul Gaultier</p>
+            </div>
+            <div class="marca" data-id="kenzo">
+                <img src="./img/Kenzo.jpg" alt="Kenzo">
+                <p>Kenzo</p>
+            </div>
+            <div class="marca" data-id="lacoste">
+                <img src="./img/Lacoste Fragrances.jpg" alt="Lacoste Fragrances">
+                <p>Lacoste Fragrances</p>
+            </div>
+            <div class="marca" data-id="lancome">
+                <img src="./img/lancome.png" alt="Lancome">
+                <p>Lancôme</p>
+            </div>
+            <div class="marca" data-id="loewe">
+                <img src="./img/Loewe.jpg" alt="Loewe">
+                <p>Loewe</p>
+            </div>
+            <div class="marca" data-id="louisvuitton">
+                <img src="./img/Louis Vuitton.jpg" alt="Louis Vuitton">
+                <p>Louis Vuitton</p>
+            </div>
+            <div class="marca" data-id="moschino">
+                <img src="./img/Moschino.png" alt="Moschino">
+                <p>Moschino</p>
+            </div>
+            <div class="marca" data-id="nautica">
+                <img src="./img/Nautica.png" alt="Nautica">
+                <p>Nautica</p>
+            </div>
+            <div class="marca" data-id="pacorabanne">
+                <img src="./img/Paco Rabanne.jpg" alt="Paco Rabanne">
+                <p>Paco Rabanne</p>
+            </div>
+            <div class="marca" data-id="prada">
+                <img src="./img/Prada.jpg" alt="Prada">
+                <p>Prada</p>
+            </div>
+            <div class="marca" data-id="ralphlauren">
+                <img src="./img/Ralph Lauren.png" alt="Ralph Lauren">
+                <p>Ralph Lauren</p>
+            </div>
+            <div class="marca" data-id="tomford">
+                <img src="./img/Tom Ford.png" alt="Tom Ford">
+                <p>Tom Ford</p>
+            </div>
+            <div class="marca" data-id="valentino">
+                <img src="./img/Valentino.png" alt="Valentino">
+                <p>Valentino</p>
+            </div>
+            <div class="marca" data-id="versace">
+                <img src="./img/Versace.jpg" alt="Versace">
+                <p>Versace</p>
+            </div>
+            <div class="marca" data-id="viktorrolf">
+                <img src="./img/Viktor&Rolf.jpg" alt="Viktor&Rolf">
+                <p>Viktor&Rolf</p>
+            </div>
+            <div class="marca" data-id="yvessaintlaurent">
+                <img src="./img/Yves Saint Laurent.jpg" alt="Yves Saint Laurent">
+                <p>Yves Saint Laurent</p>
+            </div>
+        </div>
+    </section>
+    <section id="marcas-nichos" class="marcas">
+        <h2>Nichos</h2>
+        <div class="marcas-grid">
+            <div class="marca" data-id="creed">
+                <img src="./img/creed.jpg" alt="Initio Parfums Prives">
+                <p>Creed</p>
+            </div>
+            <div class="marca" data-id="initio">
+                <img src="./img/Initio.jpg" alt="Initio Parfums Prives">
+                <p>Initio</p>
+            </div>
+            <div class="marca" data-id="lelabo">
+                <img src="./img/LeLabo.png" alt="Le Labo">
+                <p>Le Labo</p>
+            </div>
+            <div class="marca" data-id="maisonfranciskurkdjian">
+                <img src="./img/maison-francis.jpg" alt="Maison Francis Kurkdjian">
+                <p>Maison Francis Kurkdjian</p>
+            </div>
+            <div class="marca" data-id="maisonmargiela">
+                <img src="./img/Maison-margiela.jpg" alt="Maison Martin Margiela">
+                <p>Maison Margiela</p>
+            </div>
+            <div class="marca" data-id="mancera">
+                <img src="./img/MANCERA.jpg" alt="Mancera">
+                <p>Mancera</p>
+            </div>
+            <div class="marca" data-id="marly">
+                <img src="./img/marly.jpg" alt="Marly">
+                <p>Marly</p>
+            </div>
+            <div class="marca" data-id="montale">
+                <img src="./img/Montale.jpg" alt="Montale">
+                <p>Montale</p>
+            </div>
+            <div class="marca" data-id="nishane">
+                <img src="./img/Nishane.jpg" alt="Nishane">
+                <p>Nishane</p>
+            </div>
+            <div class="marca" data-id="ortoparisi">
+                <img src="./img/OrtoParisi.jpg" alt="Orto Parisi">
+                <p>Orto Parisi</p>
+            </div>
+            <div class="marca" data-id="rojadove">
+                <img src="./img/RojaDove.jpg" alt="Roja Dove">
+                <p>Roja Dove</p>
+            </div>
+            <div class="marca" data-id="shl777">
+                <img src="./img/SHL777.png" alt="Stéphane Humbert Lucas 777">
+                <p>SHL 777</p>
+            </div>
+            <div class="marca" data-id="xerjoff">
+                <img src="./img/Xerjoff.png" alt="Xerjoff">
+                <p>Xerjoff</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Perfumería Oasis Deluxe</p>
+        <p><a href="#">Política de privacidad</a></p>
+    </footer>
+
+    <a href="https://wa.me/50687683732?text=Hola,%20quiero%20más%20información" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+    </a>
+
+</body>
+
+</html>

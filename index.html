@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Perfumería Oasis Deluxe</title>
+
+    <meta name="description"
+        content="Perfumería Oasis Deluxe: Encuentra perfumes originales, nuevos y sellados. Compra en línea y recibe en todo Costa Rica.">
+    <meta name="keywords"
+        content="perfumería, perfumes, perfumes originales, fragancias, perfumes Costa Rica, afnan, armaf, attar collection, oasis deluxe">
+    <meta name="author" content="Perfumería Oasis Deluxe">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Perfumería Oasis Deluxe">
+    <meta property="og:description"
+        content="Explora nuestra exclusiva selección de fragancias de diseñador y nicho, cuidadosamente elegidas por su elegancia y carácter.">
+    <meta property="og:image" content="https://www.perfumeriaoasisdeluxe.com/img/logooasis.jpg">
+    <meta property="og:url" content="https://www.perfumeriaoasisdeluxe.com">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://www.perfumeriaoasisdeluxe.com/img/logooasis.png" type="image/png">
+    <link rel="manifest" href="manifest.json">
+
+    <script src="script.js" type="module"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="./index.html">Perfumería Oasis Deluxe</a>
+            </div>
+            <ul class="menu">
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./decants.html">Decants</a></li>
+                <li><a href="./perfumes-marcas.html">Marcas</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </nav>
+    </header>
+
+    <section class="main-section">
+
+        <!-- ===== Carrusel Destacados ===== -->
+        <section id="destacados-desktop" class="carousel d-none" aria-label="Carrusel de destacados">
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <!-- Slide 1 -->
+                    <figure class="carousel-slide ">
+                        <img src="img/lattafa/hombre/1.jpg" alt="Fragancias nicho con acordes orientales y vainilla"
+                            loading="eager" fetchpriority="high" />
+                        <figcaption class="carousel-caption">
+                            <h3>Fragancias Árabes</h3>
+                            <p>Selección exclusiva para quienes buscan algo único.</p>
+                            <a href="#marcas" class="carousel-cta">Ver perfumes</a>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Slide 2 -->
+                    <figure class="carousel-slide">
+                        <img src="img/lattafa/hombre/6.jpg" alt="Decants para probar antes de comprar" loading="lazy" />
+                        <figcaption class="carousel-caption">
+                            <h3>Decants</h3>
+                            <p>Prueba el aroma perfecto sin compromiso.</p>
+                            <a href="./decants.html" class="carousel-cta">Ver decants</a>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Slide 3 -->
+                    <figure class="carousel-slide">
+                        <img src="img/carolinaherrera/mujer/6.jpg" alt="Clásicos de diseñador para toda ocasión"
+                            loading="lazy" />
+                        <figcaption class="carousel-caption">
+                            <h3>Diseñador</h3>
+                            <p>Clásicos que nunca pasan de moda.</p>
+                            <a href="#marcas-diseno" class="carousel-cta">Ver marcas</a>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="carousel-slide ">
+                        <img src="img/marly/hombre/1.jpg" alt="Fragancias nicho con acordes orientales y vainilla"
+                            loading="eager" fetchpriority="high" />
+                        <figcaption class="carousel-caption">
+                            <h3>Fragancias Nicho</h3>
+                            <p>Selección exclusiva para quienes buscan algo único.</p>
+                            <a href="#marcas-nichos" class="carousel-cta">Ver nichos</a>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="carousel-slide">
+                        <img src="img/dior/mujer/1.jpg" alt="Clásicos de diseñador para toda ocasión" loading="lazy" />
+                        <figcaption class="carousel-caption">
+                            <h3>Diseñador</h3>
+                            <p>Clásicos que nunca pasan de moda.</p>
+                            <a href="#marcas-diseno" class="carousel-cta">Ver marcas</a>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="carousel-slide ">
+                        <img src="img/marly/hombre/2.jpg" alt="Fragancias nicho con acordes orientales y vainilla"
+                            loading="eager" fetchpriority="high" />
+                        <figcaption class="carousel-caption">
+                            <h3>Fragancias Nicho</h3>
+                            <p>Selección exclusiva para quienes buscan algo único.</p>
+                            <a href="#marcas-nichos" class="carousel-cta">Ver nichos</a>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Slide 5 -->
+                    <figure class="carousel-slide">
+                        <img src="img/jeanpaulgaultier/hombre/1.jpg" alt="Clásicos de diseñador para toda ocasión"
+                            loading="lazy" />
+                        <figcaption class="carousel-caption">
+                            <h3>Diseñador</h3>
+                            <p>Clásicos que nunca pasan de moda.</p>
+                            <a href="#marcas-diseno" class="carousel-cta">Ver marcas</a>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <!-- Controles -->
+            <button class="carousel-btn prev" aria-label="Anterior" type="button">‹</button>
+            <button class="carousel-btn next" aria-label="Siguiente" type="button">›</button>
+
+            <!-- Indicadores -->
+            <ul class="carousel-dots" role="tablist" aria-label="Seleccionar diapositiva"></ul>
+        </section>
+        <!-- ===== Fin Carrusel ===== -->
+        <div>
+            <div class="banner-item-wrapper banner-item-large-img banner-item-border show-item" data-animate="effect_1">
+                <div class="banner-item">
+                    <div class="content-box content-box-absolute content-box-center text-center">
+                        <h3 class="banner-heading">
+                            ¿Y si tu aroma ideal está aquí?
+                        </h3>
+                        <span class="banner-description">
+                            Oasis de Luxe: perfumes originales, nuevos y sellados.<br>
+                            Explora nuestra exclusiva selección de fragancias de diseñador y nicho, cuidadosamente
+                            elegidas por su elegancia y carácter.<br>
+                            Además, disfruta de nuestros sofisticados decants, perfectos para probar y descubrir tu
+                            aroma ideal sin compromiso.<br>
+                            ✨ Haz tu pedido hoy y lleva el lujo contigo a donde vayas.
+                        </span>
+                        <a href="#perfumes" class="banner-button animated-banner-button">
+                            <span>Descubre</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===== Carrusel Destacados ===== -->
+    <section id="destacados" class="carousel d-none-desk" aria-label="Carrusel de destacados">
+        <div class="carousel-viewport">
+            <div class="carousel-track">
+                <!-- Slide 1 -->
+                <figure class="carousel-slide ">
+                    <img src="img/lattafa/hombre/1.jpg" alt="Fragancias nicho con acordes orientales y vainilla"
+                        loading="eager" fetchpriority="high" />
+                    <figcaption class="carousel-caption">
+                        <h3>Fragancias Árabes</h3>
+                        <p>Selección exclusiva para quienes buscan algo único.</p>
+                        <a href="#marcas" class="carousel-cta">Ver perfumes</a>
+                    </figcaption>
+                </figure>
+
+                <!-- Slide 2 -->
+                <figure class="carousel-slide">
+                    <img src="img/lattafa/hombre/6.jpg" alt="Decants para probar antes de comprar" loading="lazy" />
+                    <figcaption class="carousel-caption">
+                        <h3>Decants</h3>
+                        <p>Prueba el aroma perfecto sin compromiso.</p>
+                        <a href="./decants.html" class="carousel-cta">Ver decants</a>
+                    </figcaption>
+                </figure>
+
+                <!-- Slide 3 -->
+                <figure class="carousel-slide">
+                    <img src="img/carolinaherrera/mujer/6.jpg" alt="Clásicos de diseñador para toda ocasión"
+                        loading="lazy" />
+                    <figcaption class="carousel-caption">
+                        <h3>Diseñador</h3>
+                        <p>Clásicos que nunca pasan de moda.</p>
+                        <a href="#marcas-diseno" class="carousel-cta">Ver marcas</a>
+                    </figcaption>
+                </figure>
+
+                <figure class="carousel-slide ">
+                    <img src="img/marly/hombre/1.jpg" alt="Fragancias nicho con acordes orientales y vainilla"
+                        loading="eager" fetchpriority="high" />
+                    <figcaption class="carousel-caption">
+                        <h3>Fragancias Nicho</h3>
+                        <p>Selección exclusiva para quienes buscan algo único.</p>
+                        <a href="#marcas-nichos" class="carousel-cta">Ver nichos</a>
+                    </figcaption>
+                </figure>
+
+                <figure class="carousel-slide">
+                    <img src="img/dior/mujer/1.jpg" alt="Clásicos de diseñador para toda ocasión" loading="lazy" />
+                    <figcaption class="carousel-caption">
+                        <h3>Diseñador</h3>
+                        <p>Clásicos que nunca pasan de moda.</p>
+                        <a href="#marcas-diseno" class="carousel-cta">Ver marcas</a>
+                    </figcaption>
+                </figure>
+
+                <figure class="carousel-slide ">
+                    <img src="img/marly/hombre/2.jpg" alt="Fragancias nicho con acordes orientales y vainilla"
+                        loading="eager" fetchpriority="high" />
+                    <figcaption class="carousel-caption">
+                        <h3>Fragancias Nicho</h3>
+                        <p>Selección exclusiva para quienes buscan algo único.</p>
+                        <a href="#marcas-nichos" class="carousel-cta">Ver nichos</a>
+                    </figcaption>
+                </figure>
+
+                <!-- Slide 5 -->
+                <figure class="carousel-slide">
+                    <img src="img/jeanpaulgaultier/hombre/1.jpg" alt="Clásicos de diseñador para toda ocasión"
+                        loading="lazy" />
+                    <figcaption class="carousel-caption">
+                        <h3>Diseñador</h3>
+                        <p>Clásicos que nunca pasan de moda.</p>
+                        <a href="#marcas-diseno" class="carousel-cta">Ver marcas</a>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <!-- Controles -->
+        <button class="carousel-btn prev" aria-label="Anterior" type="button">‹</button>
+        <button class="carousel-btn next" aria-label="Siguiente" type="button">›</button>
+
+        <!-- Indicadores -->
+        <ul class="carousel-dots" role="tablist" aria-label="Seleccionar diapositiva"></ul>
+    </section>
+    <!-- ===== Fin Carrusel ===== -->
+
+    <section id="perfumes" class="perfumes-section">
+        <h2>Todos los Perfumes</h2>
+        <div id="perfumes-grid" class="perfumery-images"></div>
+
+        <!-- Controles de paginación -->
+        <div id="pagination" class="pagination"></div>
+    </section>
+
+
+    <footer>
+        <p>&copy; 2025 Perfumería Oasis Deluxe</p>
+        <p><a href="#">Política de privacidad</a></p>
+    </footer>
+
+    <a href="https://wa.me/50687683732?text=Hola,%20quiero%20más%20información" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+    </a>
+
+</body>
+
+</html>
