@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const uploadPath = path.join(__dirname, '../../frontend/public/img/uploads');
+const uploadPath = path.join(__dirname, '../uploads');
 const imgBasePath = path.join(__dirname, '../../frontend/public/img');
 
 // Subir imagen
@@ -15,8 +15,12 @@ export const uploadImage = async (req, res) => {
       return res.status(400).json({ error: 'No se proporcionó ninguna imagen' });
     }
 
-    // Ruta relativa para usar en el frontend
-    const imageUrl = `/img/uploads/${req.file.filename}`;
+    // URL completa del backend para usar en producción
+    const baseUrl = process.env.NODE_ENV === 'production' 
+      ? (process.env.BACKEND_URL || '') 
+      : '';
+    
+    const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
     
     res.json({
       message: 'Imagen subida correctamente',
@@ -30,67 +34,42 @@ export const uploadImage = async (req, res) => {
   }
 };
 
-// Listar todas las imágenes de una carpeta
+// Listar todas las imágenes de uploads
 export const listImages = async (req, res) => {
   try {
-    const { folder } = req.query; // Carpeta opcional: 'uploads', 'armaf', etc.
-    
-    let targetPath = uploadPath;
-    
-    if (folder && folder !== 'uploads') {
-      targetPath = path.join(imgBasePath, folder);
-    }
-    
-    // Verificar que la carpeta existe
-    if (!fs.existsSync(targetPath)) {
+    // Verificar que la carpeta exists
+    if (!fs.existsSync(uploadPath)) {
+      fs.mkdirSync(uploadPath, { recursive: true });
       return res.json({ images: [] });
     }
     
-    // Leer archivos de la carpeta
-    const files = fs.readdirSync(targetPath, { withFileTypes: true });
+    const files = fs.readdirSync(uploadPath, { withFileTypes: true });
+    const baseUrl = process.env.NODE_ENV === 'production' 
+      ? (process.env.BACKEND_URL || '') 
+      : '';
     
-    const images = [];
-    
-    // Función recursiva para obtener todas las imágenes
-    const getImagesRecursive = (dirPath, relativePath = '') => {
-      const items = fs.readdirSync(dirPath, { withFileTypes: true });
-      
-      items.forEach(item => {
-        const fullPath = path.join(dirPath, item.name);
-        const relPath = path.join(relativePath, item.name);
+    const images = files
+      .filter(file => {
+        const ext = path.extname(file.name).toLowerCase();
+        return ['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(ext);
+      })
+      .map(file => {
+        const fullPath = path.join(uploadPath, file.name);
+        const stats = fs.statSync(fullPath);
         
-        if (item.isDirectory()) {
-          // Recursivamente buscar en subcarpetas
-          getImagesRecursive(fullPath, relPath);
-        } else {
-          // Verificar si es una imagen
-          const ext = path.extname(item.name).toLowerCase();
-          if (['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(ext)) {
-            const stats = fs.statSync(fullPath);
-            const urlPath = folder && folder !== 'uploads' 
-              ? `/img/${folder}/${relPath.replace(/\\/g, '/')}`
-              : `/img/uploads/${relPath.replace(/\\/g, '/')}`;
-            
-            images.push({
-              filename: item.name,
-              path: relPath.replace(/\\/g, '/'),
-              url: urlPath,
-              size: stats.size,
-              created: stats.birthtime,
-              modified: stats.mtime
-            });
-          }
-        }
+        return {
+          filename: file.name,
+          url: `${baseUrl}/uploads/${file.name}`,
+          size: stats.size,
+          created: stats.birthtime,
+          modified: stats.mtime
+        };
       });
-    };
-    
-    getImagesRecursive(targetPath);
     
     // Ordenar por fecha de modificación (más reciente primero)
     images.sort((a, b) => b.modified - a.modified);
     
     res.json({
-      folder: folder || 'uploads',
       count: images.length,
       images
     });
@@ -100,49 +79,12 @@ export const listImages = async (req, res) => {
   }
 };
 
-// Listar todas las carpetas disponibles
+// Listar carpetas (simplificado - solo uploads)
 export const listFolders = async (req, res) => {
   try {
     const folders = [];
     
-    // Leer carpetas en /img
-    const items = fs.readdirSync(imgBasePath, { withFileTypes: true });
-    
-    items.forEach(item => {
-      if (item.isDirectory() && item.name !== 'uploads') {
-        const folderPath = path.join(imgBasePath, item.name);
-        const stats = fs.statSync(folderPath);
-        
-        // Contar imágenes en la carpeta
-        const countImages = (dirPath) => {
-          let count = 0;
-          const items = fs.readdirSync(dirPath, { withFileTypes: true });
-          
-          items.forEach(item => {
-            const fullPath = path.join(dirPath, item.name);
-            if (item.isDirectory()) {
-              count += countImages(fullPath);
-            } else {
-              const ext = path.extname(item.name).toLowerCase();
-              if (['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(ext)) {
-                count++;
-              }
-            }
-          });
-          
-          return count;
-        };
-        
-        folders.push({
-          name: item.name,
-          path: `/img/${item.name}`,
-          imageCount: countImages(folderPath),
-          modified: stats.mtime
-        });
-      }
-    });
-    
-    // Agregar carpeta de uploads
+    // Solo devolver carpeta de uploads
     if (fs.existsSync(uploadPath)) {
       const stats = fs.statSync(uploadPath);
       const uploadFiles = fs.readdirSync(uploadPath);
@@ -151,9 +93,13 @@ export const listFolders = async (req, res) => {
         return ['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(ext);
       }).length;
       
-      folders.unshift({
+      const baseUrl = process.env.NODE_ENV === 'production' 
+        ? (process.env.BACKEND_URL || '') 
+        : '';
+      
+      folders.push({
         name: 'uploads',
-        path: '/img/uploads',
+        path: `${baseUrl}/uploads`,
         imageCount,
         modified: stats.mtime
       });
@@ -173,15 +119,8 @@ export const listFolders = async (req, res) => {
 export const deleteImage = async (req, res) => {
   try {
     const { filename } = req.params;
-    const { folder } = req.query;
     
-    let filePath;
-    
-    if (folder && folder !== 'uploads') {
-      filePath = path.join(imgBasePath, folder, filename);
-    } else {
-      filePath = path.join(uploadPath, filename);
-    }
+    const filePath = path.join(uploadPath, filename);
     
     // Verificar que el archivo existe
     if (!fs.existsSync(filePath)) {

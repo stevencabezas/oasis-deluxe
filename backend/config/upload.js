@@ -6,8 +6,8 @@ import fs from 'fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Ruta donde se guardarán las imágenes
-const uploadPath = path.join(__dirname, '../../frontend/public/img/uploads');
+// Ruta donde se guardarán las imágenes (dentro del backend)
+const uploadPath = path.join(__dirname, '../uploads');
 
 // Crear el directorio si no existe
 if (!fs.existsSync(uploadPath)) {

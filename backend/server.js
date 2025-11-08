@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { testConnection, syncDatabase } from './config/database.js';
 import brandsRoutes from './routes/brands.js';
 import perfumesRoutes from './routes/perfumes.js';
@@ -14,6 +16,9 @@ import './models/index.js';
 // Cargar variables de entorno
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -24,6 +29,9 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Servir imágenes estáticas
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Conectar a PostgreSQL
 (async () => {

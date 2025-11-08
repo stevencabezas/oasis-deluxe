@@ -255,19 +255,18 @@ function PerfumesManagement() {
               </div>
               <div className="form-group">
                 <label>Marca (ID o slug)</label>
-                <input
-                  type="text"
+                <select
                   value={formData.marcaId}
                   onChange={(e) => setFormData({ ...formData, marcaId: e.target.value })}
-                  placeholder="ej: afnan"
                   required
-                  list="brands-list"
-                />
-                <datalist id="brands-list">
+                >
+                  <option value="">Seleccionar marca...</option>
                   {brands.map(brand => (
-                    <option key={brand.id} value={brand.brandId} />
+                    <option key={brand.id} value={brand.brandId}>
+                      {brand.nombre} ({brand.brandId})
+                    </option>
                   ))}
-                </datalist>
+                </select>
               </div>
               <div className="form-actions">
                 <button type="submit" className="save-button">
