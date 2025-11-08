@@ -2,6 +2,8 @@
 
 Este archivo contiene las configuraciones exactas para trabajar localmente.
 
+> 💡 **Nota:** Para más detalles sobre seguridad de variables de entorno, consulta [ENVIRONMENT_VARIABLES.md](ENVIRONMENT_VARIABLES.md)
+
 ---
 
 ## ⚙️ Backend - `backend/.env`
@@ -26,8 +28,11 @@ DB_PASSWORD=TU_PASSWORD_AQUI
 # SERVIDOR
 PORT=5000
 
-# JWT (para login admin)
-JWT_SECRET=mi_secreto_local_123
+# JWT (para login admin) - ¡OBLIGATORIO!
+# Genera uno seguro con: node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+# O usa el mismo que en producción para testing
+JWT_SECRET=cd23c04642b75f81a7ed425f100c1252b39e6159efc35601889d991e040ec975d4d166ca53b68a9c735ac1cb5f8ea710372af20b6321829ed4d8b714c66012f1
+JWT_EXPIRES_IN=24h
 
 # CORS (permite que el frontend local se conecte)
 FRONTEND_URL=http://localhost:5173

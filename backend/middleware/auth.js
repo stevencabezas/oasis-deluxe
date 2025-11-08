@@ -11,7 +11,12 @@ export const authenticateToken = async (req, res, next) => {
       return res.status(401).json({ error: 'Token de acceso requerido' });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key-here');
+    if (!process.env.JWT_SECRET) {
+      console.error('FATAL: JWT_SECRET no está configurado en las variables de entorno');
+      return res.status(500).json({ error: 'Error de configuración del servidor' });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     
     // Verificar que el usuario existe y está activo
     const user = await User.findByPk(decoded.userId);

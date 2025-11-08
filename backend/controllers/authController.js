@@ -2,7 +2,14 @@ import jwt from 'jsonwebtoken';
 import { Op } from 'sequelize';
 import User from '../models/User.js';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-here';
+// Verificar que JWT_SECRET esté configurado
+if (!process.env.JWT_SECRET) {
+  console.error('FATAL ERROR: JWT_SECRET no está configurado en las variables de entorno');
+  console.error('La aplicación no puede iniciar sin JWT_SECRET por razones de seguridad');
+  process.exit(1);
+}
+
+const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '24h';
 
 // Generar token JWT
