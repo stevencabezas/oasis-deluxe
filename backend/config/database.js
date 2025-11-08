@@ -3,8 +3,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// Si existe DATABASE_URL (producción), usarla directamente
-// Si no, usar variables individuales (desarrollo)
+// Si existe DATABASE_URL (producción/Neon), usarla con SSL
+// Si no, usar variables individuales (desarrollo local)
 const sequelize = process.env.DATABASE_URL
   ? new Sequelize(process.env.DATABASE_URL, {
       dialect: 'postgres',

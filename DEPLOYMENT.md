@@ -416,3 +416,6 @@ Tu aplicación está desplegada y funcionando en producción.
 **Stack:** React + Vite + Node.js + Express + PostgreSQL
 **Costo:** $0/mes (MVP)
 
+
+
+
