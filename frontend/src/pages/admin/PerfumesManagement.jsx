@@ -212,6 +212,7 @@ function PerfumesManagement() {
                 </small>
                 {formData.imagenUrl && (
                   <div className="image-preview">
+                    {console.log(formData)}
                     <label>Preview:</label>
                     <img 
                       src={formData.imagenUrl}

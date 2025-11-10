@@ -11,26 +11,17 @@ const imgBasePath = path.join(__dirname, '../../frontend/public/img');
 // Subir imagen
 export const uploadImage = async (req, res) => {
   try {
-    if (!req.file) {
-      return res.status(400).json({ error: 'No se proporcionó ninguna imagen' });
-    }
+    if (!req.file) return res.status(400).json({ error: 'No se proporcionó ninguna imagen' });
 
-    // URL completa del backend para usar en producción
-    const baseUrl = process.env.NODE_ENV === 'production' 
-      ? (process.env.BACKEND_URL || '') 
-      : '';
-    
+    // usar BACKEND_URL si existe; si no, derivar de la request
+    const baseUrl =
+      process.env.BACKEND_URL ??
+      `${req.protocol}://${req.get('host')}`;
+
     const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
-    
-    res.json({
-      message: 'Imagen subida correctamente',
-      imageUrl,
-      filename: req.file.filename,
-      size: req.file.size,
-      mimetype: req.file.mimetype
-    });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    return res.json({ message:'Imagen subida correctamente', imageUrl, filename: req.file.filename, size: req.file.size, mimetype: req.file.mimetype });
+  } catch (e) {
+    return res.status(500).json({ error: e.message });
   }
 };
 
