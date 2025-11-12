@@ -5,7 +5,6 @@ import ImageManager from "../../components/ImageManager";
 import "./Management.css";
 // Base del backend (si usas http://host:4000/api, quitamos el /api)
 const API_BASE = (import.meta.env.VITE_API_URL || "").replace(/\/api\/?$/,"");
-console.log('API_BASE =', API_BASE);
 // Normaliza y resuelve la URL para el <img> de PREVIEW
 const resolveImageUrl = (u) => {
   if (!u) return "";

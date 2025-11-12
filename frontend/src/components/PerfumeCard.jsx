@@ -40,7 +40,6 @@ function PerfumeCard({ perfume, marcaNombre }) {
   //   : `/img/${imageSrc}`;
 
   const imageSrc = resolveImageUrl(perfume.imagenUrl || perfume.src || '');
-  console.log('imagenUrl:', perfume.imagenUrl, 'resuelta:', resolveImageUrl(perfume.imagenUrl));
 
   return (
     <div className="perfumery-item">
