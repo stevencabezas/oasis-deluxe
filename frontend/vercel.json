@@ -1,0 +1,44 @@
+{
+  "redirects": [
+    { "source": "/marcas.html", "destination": "/marcas", "permanent": true },
+    { "source": "/decants.html", "destination": "/decants", "permanent": true },
+    { "source": "/contacto.html", "destination": "/contacto", "permanent": true },
+    { "source": "/marca/:slug.html", "destination": "/marca/:slug", "permanent": true }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/img/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}
+

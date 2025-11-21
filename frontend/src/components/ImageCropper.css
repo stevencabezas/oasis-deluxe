@@ -1,0 +1,179 @@
+.image-cropper {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+}
+
+.cropper-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.cropper-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 20px;
+}
+
+.cropper-controls {
+  padding: 15px 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.cropper-controls label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cropper-controls select {
+  padding: 8px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.cropper-controls select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.cropper-content {
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f0f0;
+}
+
+.ReactCrop {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.cropper-actions {
+  padding: 20px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.crop-save-button,
+.crop-cancel-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.crop-save-button {
+  background: #28a745;
+  color: white;
+}
+
+.crop-save-button:hover {
+  background: #218838;
+}
+
+.crop-cancel-button {
+  background: #6c757d;
+  color: white;
+}
+
+.crop-cancel-button:hover {
+  background: #5a6268;
+}
+
+.cropper-info {
+  padding: 15px 20px;
+  background: #f8f9fa;
+  border-top: 1px solid #e0e0e0;
+}
+
+.cropper-info p {
+  margin: 0;
+  color: #666;
+  font-size: 13px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cropper-header {
+    padding: 15px;
+  }
+
+  .cropper-header h3 {
+    font-size: 18px;
+  }
+
+  .cropper-controls {
+    padding: 12px 15px;
+    flex-wrap: wrap;
+  }
+
+  .cropper-controls label {
+    font-size: 13px;
+    width: 100%;
+  }
+
+  .cropper-controls select {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .cropper-content {
+    padding: 15px;
+  }
+
+  .cropper-actions {
+    padding: 15px;
+    flex-direction: column;
+  }
+
+  .crop-save-button,
+  .crop-cancel-button {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .cropper-info {
+    padding: 12px 15px;
+  }
+
+  .cropper-info p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cropper-header h3 {
+    font-size: 16px;
+  }
+
+  .cropper-controls label {
+    font-size: 12px;
+  }
+}
+
